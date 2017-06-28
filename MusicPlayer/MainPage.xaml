@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="MusicPlayer.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MusicPlayer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView x:Name="MasterSplitView" IsPaneOpen="False" DisplayMode="CompactInline"  OpenPaneLength="140" Margin="0,0,0,0">
+            <SplitView.Resources>
+                <DataTemplate x:Key="NavTemplate">
+                    <Grid Height="24">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="48"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="{Binding Icon}"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="-14,0,0,0" Width="48" Height="20" />
+                        <TextBlock Grid.Column="1" Text="{Binding Title}" Width="72" Margin="-8,0,0,0" VerticalAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </SplitView.Resources>
+            <SplitView.Pane>
+                <Grid x:Name="SplitViewPane">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ToggleButton x:Name="HamburgerButton" Width="48" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ToggleButton_Click">
+                        <ToggleButton.Content>
+                            <FontIcon x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" Margin="0,10,0,0" />
+                        </ToggleButton.Content>
+                    </ToggleButton>
+                    <RelativePanel Background="Transparent" Grid.Row="1">
+                        <ListView x:Name="NavContorl" RelativePanel.AlignTopWithPanel="True"
+                             VerticalAlignment="Top" HorizontalAlignment="Left"
+                             SelectionMode="None"
+                             Background="Transparent"
+                             Margin="0,4,0,0"
+                             IsItemClickEnabled="True"
+                             ItemClick="NavContorl_ItemClick"
+                             ItemTemplate="{StaticResource NavTemplate}"/>
+
+                        <ListView x:Name="FootContorl" RelativePanel.AlignBottomWithPanel="True"
+                             VerticalAlignment="Top" HorizontalAlignment="Left"
+                             SelectionMode="None"
+                             Background="Transparent"
+                             Margin="0,4,0,0"
+                             IsItemClickEnabled="True"
+                             ItemClick="FootContorl_ItemClick"
+                             ItemTemplate="{StaticResource NavTemplate}" BorderThickness="0,1,0,0" BorderBrush="White"/>
+                    </RelativePanel>
+                </Grid>
+
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame x:Name="MasterFrame" Grid.Column="0" />
+                    <Frame x:Name="MusicPlayerFrame" Grid.Column="1"/>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+</Page>

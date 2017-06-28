@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="MusicPlayer.Pages.MyMusicPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MusicPlayer.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.Resources>
+            <DataTemplate x:Key="MusicItemTemplate">
+                <Grid Height="24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8D6;" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="-14,0,0,0" Width="48" Height="20" />
+                    <TextBlock Grid.Column="1" Text="{Binding Title}"  Margin="-8,0,0,0" VerticalAlignment="Center" />
+                </Grid>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ProgressRing x:ConnectionId='1' x:Name="Loading" Grid.RowSpan="2" Height="60" Width="60" IsActive="False"/>
+        <TextBlock Text="我的音乐" Style="{StaticResource HeaderTextBlockStyle}" Margin="10,0,0,0"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" >
+            <ListView x:ConnectionId='2' FontSize="22" x:Name="LstViewPlayList" HorizontalAlignment="Left" Margin="0,5,10,1" VerticalAlignment="Top" Width="280" ScrollViewer.VerticalScrollBarVisibility="Auto"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemTemplate="{StaticResource MusicItemTemplate}" IsItemClickEnabled="True"                                      />
+        </ScrollViewer>
+    </Grid>
+</Page>
+
