@@ -35,6 +35,11 @@ namespace MusicPlayer.Pages
             Current = this;
         }
 
+        public void UpdateMusicSelectedStatus(int index)
+        {
+            
+        }
+
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             this.Loading.IsActive = true;

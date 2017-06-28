@@ -27,7 +27,20 @@
         <ProgressRing x:Name="Loading" Grid.RowSpan="2" Height="60" Width="60" IsActive="False"/>
         <TextBlock Text="我的音乐" Style="{StaticResource HeaderTextBlockStyle}" Margin="10,0,0,0"/>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center" >
-            <ListView FontSize="22" x:Name="LstViewPlayList" HorizontalAlignment="Left" Margin="0,5,10,1" VerticalAlignment="Top" Width="280" ScrollViewer.VerticalScrollBarVisibility="Auto"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemTemplate="{StaticResource MusicItemTemplate}" IsItemClickEnabled="True" ItemClick="LstViewPlayList_ItemClick"/>
+            <ListView FontSize="22" x:Name="LstViewPlayList" HorizontalAlignment="Left" Margin="0,5,10,1" VerticalAlignment="Top" Width="280" ScrollViewer.VerticalScrollBarVisibility="Auto"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsItemClickEnabled="True" ItemClick="LstViewPlayList_ItemClick" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Height="24">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="48"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8D6;" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="-14,0,0,0" Width="48" Height="20" />
+                            <TextBlock Grid.Column="1" Text="{Binding Title}"  Margin="-8,0,0,0" VerticalAlignment="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </ScrollViewer>
     </Grid>
 </Page>
