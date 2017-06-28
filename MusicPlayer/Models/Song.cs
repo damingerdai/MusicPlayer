@@ -67,7 +67,7 @@ namespace MusicPlayer.Models
                     }
                     else
                     {
-                        return _name.Substring(0,_name.Length - 4);
+                        return _name;
                     }
                 }
                 else
