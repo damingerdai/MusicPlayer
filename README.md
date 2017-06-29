@@ -9,5 +9,7 @@
 
 ## [3.音乐播放器之加载我的音乐](http://www.cnblogs.com/xiao2/p/7092211.html)
 
+## [4.音乐播放器之音频播放](http://www.cnblogs.com/xiao2/p/7096254.html)
+
 # 源代码：
 [github地址](https://github.com/damingerdai/MusicPlayer)
