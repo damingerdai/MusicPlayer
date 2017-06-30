@@ -11,6 +11,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.Resources>
             <cvt:MusicConverter x:Key="MusicPostionConverter"/>
+            <cvt:VolumeConverter x:Key="MusicVolumeConverter"/>
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -37,7 +38,7 @@
                 <TextBlock Grid.Column="2" FontFamily="Segoe MDL2 Assets" Text="&#xE953;" HorizontalAlignment="Right" VerticalAlignment="Center" Tapped="TextBlock_Tapped" Margin="0,0,20,0">
                     <FlyoutBase.AttachedFlyout>
                         <Flyout>
-                              <Slider x:Name="SldrVolume" Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Value="{Binding ElementName=MediaPlayer, Path=Volume,Mode=TwoWay}"/> 
+                              <Slider x:Name="SldrVolume" Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" ValueChanged="SldrVolume_ValueChanged" Value="50" Minimum="0.0" Maximum="100.0"/> 
                         </Flyout>
                     </FlyoutBase.AttachedFlyout>
                 </TextBlock>

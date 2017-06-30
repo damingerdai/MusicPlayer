@@ -110,6 +110,9 @@ namespace MusicPlayer.Pages
 
         }
 
-     
+        private void SldrVolume_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            this.MediaPlayer.Volume = this.SldrVolume.Value / 100.0;
+        }
     }
 }
