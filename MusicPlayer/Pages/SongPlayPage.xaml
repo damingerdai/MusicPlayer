@@ -11,38 +11,33 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.Resources>
             <cvt:MusicConverter x:Key="MusicPostionConverter"/>
-            <cvt:VolumeConverter x:Key="MusicVolumeConverter"/>
         </Grid.Resources>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition x:Name="MediaGrid" Height="*"/>
+            <RowDefinition x:Name="PlayerPostionGrid" Height="40"/>
+            <RowDefinition x:Name="BttnGrid" Height="Auto"/>
         </Grid.RowDefinitions>
         <Border BorderThickness="1">
-            <MediaElement x:Name="MediaPlayer" Height="Auto" Width="Auto" VerticalAlignment="Center" HorizontalAlignment="Center" MediaOpened="MediaPlayer_MediaOpened" MediaEnded="MediaPlayer_MediaEnded"/>
+            <MediaElement x:Name="MediaPlayer" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center" MediaOpened="MediaPlayer_MediaOpened" MediaEnded="MediaPlayer_MediaEnded" />
         </Border>
         <RelativePanel Grid.Row="1" >
             <Slider x:Name="PlayerPostion" Height="40" VerticalAlignment="Center" RelativePanel.AlignTopWithPanel="True" Value="{Binding ElementName=MediaPlayer,Path=Position, Converter={StaticResource MusicPostionConverter}, Mode=TwoWay}" Minimum="0.0" />
-            <Grid RelativePanel.Below="PlayerPostion" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <ToggleSwitch x:Name="SwtchMediaRepeat" OffContent="单曲循环" OnContent="顺序循环" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
-                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                    <Button x:Name="BttnPrevious" FontFamily="Segoe MDL2 Assets" Content="&#xEDD9;"/>
-                    <Button x:Name="BttnPlay" FontFamily="Segoe MDL2 Assets" Content="&#xEDB4;" Click="BttnPlay_Click"/>
-                    <Button x:Name="BttnStop" FontFamily="Segoe MDL2 Assets" Content="&#xEDB5;"/>
-                    <Button x:Name="BttnNext" FontFamily="Segoe MDL2 Assets" Content="&#xEDDA;"/>
-                </StackPanel>
-                <TextBlock Grid.Column="2" FontFamily="Segoe MDL2 Assets" Text="&#xE953;" HorizontalAlignment="Right" VerticalAlignment="Center" Tapped="TextBlock_Tapped" Margin="0,0,20,0">
+        </RelativePanel>
+        <RelativePanel Grid.Row="2">
+            <ToggleSwitch x:Name="SwtchMediaRepeat" OffContent="单曲循环" OnContent="顺序循环" HorizontalAlignment="Left"  VerticalAlignment="Center" RelativePanel.AlignLeftWithPanel="True"/>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True" >
+                <Button x:Name="BttnPrevious" FontFamily="Segoe MDL2 Assets" Content="&#xEDD9;" Click="BttnPrevious_Click"/>
+                <Button x:Name="BttnPlay" FontFamily="Segoe MDL2 Assets" Content="&#xEDB4;" Click="BttnPlay_Click"/>
+                <Button x:Name="BttnStop" FontFamily="Segoe MDL2 Assets" Content="&#xEDB5;" Click="BttnStop_Click"/>
+                <Button x:Name="BttnNext" FontFamily="Segoe MDL2 Assets" Content="&#xEDDA;" Click="BttnNext_Click"/>
+            </StackPanel>
+            <TextBlock Grid.Column="2" FontFamily="Segoe MDL2 Assets" Text="&#xE953;" HorizontalAlignment="Left"  VerticalAlignment="Center" Tapped="TextBlock_Tapped" RelativePanel.AlignRightWithPanel="True" Margin="0,15,30,0" >
                     <FlyoutBase.AttachedFlyout>
                         <Flyout>
                               <Slider x:Name="SldrVolume" Height="32" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" ValueChanged="SldrVolume_ValueChanged" Value="50" Minimum="0.0" Maximum="100.0"/> 
                         </Flyout>
                     </FlyoutBase.AttachedFlyout>
-                </TextBlock>
-            </Grid>
+            </TextBlock>
         </RelativePanel>
     </Grid>
 </Page>

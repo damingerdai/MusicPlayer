@@ -57,7 +57,7 @@
             <SplitView.Content>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" MinWidth="320"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <Frame x:Name="MasterFrame" Grid.Column="0" />
